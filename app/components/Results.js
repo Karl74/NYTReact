@@ -1,18 +1,18 @@
 var React = require("react");
-
+var Eachresult = require("./Eachresult");
 var Results = React.createClass({
 	render: function(){
 		return (
+			<div className="panel panel-primary">
+				<div className="panel-heading">
+					<h3 className="panel-title">Results</h3>
+				</div>
 
-			<div class="panel panel-default">
-  				<div class="panel-heading">
-    				<h3 class="panel-title">RESULTS</h3>
-  				</div>
-				
-				<div class="panel-body">
-    				THIS IS AN ARTICLE
-  				</div>
+				<div className="panel-body">
+						<Eachresult />
+				</div>
 			</div>
+
 			);
 	}
 });
