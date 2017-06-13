@@ -11,7 +11,8 @@ class Parent extends React.Component{
 		this.state = {
 			term: "",
 			beginDate: 0,
-			endDate: 0
+			endDate: 0,
+			results:[]
 		}
 		this.setTheState = this.setTheState.bind(this);
 	}
@@ -23,7 +24,12 @@ class Parent extends React.Component{
 		});
 	}
 componentDidUpdate(prevProps, prevState){
-	helpers.search(this.state.term, this.state.beginDate, this.state.endDate)
+	if(prevState.term != this.state.term ){
+		helpers.search(this.state.term, this.state.beginDate, this.state.endDate).then((data) => {
+			this.setState({results:data});
+			console.log(this.state.results);
+		})
+	}
 }
 
 	render() {
@@ -36,7 +42,7 @@ componentDidUpdate(prevProps, prevState){
 
 				<Search setTerm ={this.setTheState} />
 
-				<Results />
+				<Results results = {this.state.results}/>
 
 				<Saved />
 
@@ -47,4 +53,4 @@ componentDidUpdate(prevProps, prevState){
 
 } // end of react class
 
-module.exports =Parent;
+module.exports = Parent;
